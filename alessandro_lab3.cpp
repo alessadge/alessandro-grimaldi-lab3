@@ -10,15 +10,16 @@ using namespace std;
 
 //funcion para pasar a binario
 void binario(int);
-//crear matriz
+/*crear matriz
 char** createMatrix(int n);
 //imprime una matriz en la consola
-void printMatrix(int , int[][]);
+void printMatrix(int);
 //liberar memoria
 void freeMatrix(int , char**);
 //rellenar matriz
-void rellenarMatriz(int, int[][]);
-//darle vuelta a la matriz
+void rellenarMatriz(int);
+*///darle vuelta a la matriz
+void transpuestaMatriz(int);
 
 int main(){
 	int resp = 's';
@@ -41,11 +42,8 @@ int main(){
 		if(opcion==2){
 			int tamano;
 			cout<<"Ingrese numero de filas y columnas nxn: "<<endl;
-			cin>>tamano;
-			int matriz[tamano][tamano];
-			rellenarMatriz(tamano, matriz);
-			imprimirMatriz(tamano,matriz);		
-							
+			cin>>tamano;		
+			transpuestaMatriz(tamano);							
 		}//if opcion 2
 
 
@@ -95,17 +93,10 @@ void binario(int b){
 	cout<<"El numero binario es: " << binario <<endl;
 }//fin binario
 
-void printMatrix(int size, int[][] matrix){
- for(int i = 0; i < size; i++){
-  for(int j = 0; j < size; j++){
-   cout<<" "<<matrix[i][j];
- }
-  cout<<endl;
-  }
-   }
 
 
-void rellenarMatriz(int size, int[][] y){
+
+/*void rellenarMatriz(int size){
 int acum=0;
  for(int i = 0; i < size; i++){
   for(int j = 0; j < size; j++){
@@ -114,6 +105,41 @@ int acum=0;
 		
 	}	
 }
+}*///fin metodo
+
+void transpuestaMatriz(int size){
+int temporal[size][size];
+int y[size][size];
+int acum=0;
+ for(int i = 0; i < size; i++){
+  for(int j = 0; j < size; j++){
+        y[i][j] = acum;
+        acum++;
+
+        }
+}
+for(int i = 0; i < size; i++){
+  for(int j = 0; j < size; j++){
+   cout<<" "<<y[i][j];
+ }
+  cout<<endl;
+  }
+cout<<endl;
+
+int temporalAcum = size-1;
+ for(int i = 0; i < size; i++){
+   for(int j = 0; j < size ; j++){
+	temporal[j][temporalAcum] = y[i][j];
+}
+ temporalAcum--;
+}
+for(int i = 0; i < size; i++){
+  for(int j = 0; j < size; j++){
+   cout<<" "<<temporal[i][j];
+ } 
+  cout<<endl;
+  }
+cout<<endl;
+
+
 }//fin metodo
-
-
